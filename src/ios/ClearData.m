@@ -58,7 +58,7 @@
 }
 
 - (void)clearWKWebViewData:(NSSet*)dataTypes
-                   success:(void (^)())successBlock
+                   success:(void (^)(void))successBlock
 {
 #if defined(__IPHONE_9_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
     [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:dataTypes modifiedSince:[NSDate dateWithTimeIntervalSince1970:0] completionHandler:^{
