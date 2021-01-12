@@ -89,8 +89,9 @@
 
 
 - (bool)usingWKWebView{
-    Class class = NSClassFromString(@"CDVWKWebViewEngine");
-    return class != nil;
+    Class wkPluginClass = NSClassFromString(@"CDVWKWebViewEngine");
+    Class wkPlatformClass = NSClassFromString(@"CDVWebViewEngine");
+    return wkPluginClass != nil || wkPlatformClass != nil;
 }
 
 @end
