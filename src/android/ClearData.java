@@ -37,8 +37,8 @@ public class ClearData extends CordovaPlugin
     private static final String ACTION_CACHE = "cache";
 
     private ClearData self;
-
     private CallbackContext callbackContext;
+    private Context context;
 
     /**
      * Constructor.
