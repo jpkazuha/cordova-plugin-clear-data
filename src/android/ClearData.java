@@ -74,7 +74,7 @@ public class ClearData extends CordovaPlugin
                     sendPluginSuccess();
                     
                     //context.getCachedir();
-                    File dir = new File(context.getCachedir()); 
+                    File dir = new File(getApplicationContext().getCachedir()); 
                     if (dir.isDirectory()) 
                     {
                         String[] children = dir.list();
@@ -83,7 +83,7 @@ public class ClearData extends CordovaPlugin
                            new File(dir, children[i]).delete();
                         }
                     } else {
-                        handleException(new Exception("Cache Dir: " + getCachedir()));
+                        handleException(new Exception("Cache Dir: " + getApplicationContext().getCachedir()));
                     }
                     
                 } catch (Exception e) {
