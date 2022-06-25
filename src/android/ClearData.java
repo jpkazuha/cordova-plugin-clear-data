@@ -76,7 +76,7 @@ public class ClearData extends CordovaPlugin
                     self.webView.clearCache();
                     sendPluginSuccess();
                     
-                    //context.getCachedir();
+                    //Clears cache in internal storage
                     File dir = new File(context.getCacheDir().getAbsolutePath()); 
                     if (dir.isDirectory()) 
                     {
@@ -84,6 +84,19 @@ public class ClearData extends CordovaPlugin
                         for (int i = 0; i < children.length; i++)
                         {
                            new File(dir, children[i]).delete();
+                        }
+                    } else {
+                        handleException(new Exception("Cache Dir: " + context.getCacheDir().getAbsolutePath()));
+                    }
+                    
+                    //Clears cache in external storage
+                    File dirExt = new File(context.getExternalCacheDir().getAbsolutePath()); 
+                    if (dirExt.isDirectory()) 
+                    {
+                        String[] children = dirExt.list();
+                        for (int i = 0; i < children.length; i++)
+                        {
+                           new File(dirExt, children[i]).delete();
                         }
                     } else {
                         handleException(new Exception("Cache Dir: " + context.getCacheDir().getAbsolutePath()));
