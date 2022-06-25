@@ -58,6 +58,7 @@ public class ClearData extends CordovaPlugin
 
             if( action.equals(ACTION_CACHE) ) {
                 clearCache();
+                return true;
             }else{
                 handleError("Unknown plugin action: " + action);
                 return false;
@@ -74,7 +75,6 @@ public class ClearData extends CordovaPlugin
             public void run() {                
                 try {
                     self.webView.clearCache();
-                    sendPluginSuccess();
                     
                     //Clears cache in internal storage
                     File dir = new File(context.getCacheDir().getAbsolutePath()); 
@@ -115,7 +115,7 @@ public class ClearData extends CordovaPlugin
                         handleException(new Exception("Cache Code Dir: " + context.getCodeCacheDir().getAbsolutePath()));
                     }
                     
-                    
+                    sendPluginSuccess();
                 } catch (Exception e) {
                     handleException(e);
                 }
