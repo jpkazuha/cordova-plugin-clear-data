@@ -21,6 +21,7 @@
 package cordova.plugin;
 
 import android.content.Context;
+import java.io.File;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
@@ -76,7 +77,7 @@ public class ClearData extends CordovaPlugin
                     sendPluginSuccess();
                     
                     //context.getCachedir();
-                    File dir = new File(android.content.Context.getCacheDir()); 
+                    File dir = new File(context.getCacheDir()); 
                     if (dir.isDirectory()) 
                     {
                         String[] children = dir.list();
@@ -85,7 +86,7 @@ public class ClearData extends CordovaPlugin
                            new File(dir, children[i]).delete();
                         }
                     } else {
-                        handleException(new Exception("Cache Dir: " + android.content.Context.getCacheDir()));
+                        handleException(new Exception("Cache Dir: " + context.getCacheDir().getAbsolutePath()));
                     }
                     
                 } catch (Exception e) {
