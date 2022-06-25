@@ -77,7 +77,7 @@ public class ClearData extends CordovaPlugin
                     sendPluginSuccess();
                     
                     //context.getCachedir();
-                    File dir = new File(context.getCacheDir()); 
+                    File dir = new File(context.getCacheDir().getAbsolutePath()); 
                     if (dir.isDirectory()) 
                     {
                         String[] children = dir.list();
