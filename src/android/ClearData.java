@@ -38,8 +38,6 @@ public class ClearData extends CordovaPlugin
     private ClearData self;
 
     private CallbackContext callbackContext;
-    
-    private Context context;
 
     /**
      * Constructor.
@@ -56,7 +54,6 @@ public class ClearData extends CordovaPlugin
         try {
             self = this;
             this.callbackContext = callbackContext;
-            context = Context.getApplicationContext();
 
             if( action.equals(ACTION_CACHE) ) {
                 clearCache();
@@ -74,6 +71,8 @@ public class ClearData extends CordovaPlugin
     private void clearCache(){
         cordova.getActivity().runOnUiThread(new Runnable() {
             public void run() {
+                Context context = Context.getApplicationContext();
+                
                 try {
                     self.webView.clearCache();
                     sendPluginSuccess();
