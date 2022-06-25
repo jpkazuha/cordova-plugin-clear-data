@@ -58,7 +58,6 @@ public class ClearData extends CordovaPlugin
 
             if( action.equals(ACTION_CACHE) ) {
                 clearCache();
-                return true;
             }else{
                 handleError("Unknown plugin action: " + action);
                 return false;
